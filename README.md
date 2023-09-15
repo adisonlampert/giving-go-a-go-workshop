@@ -158,13 +158,15 @@ To import the Postman requests used in this workshop:
 2. In “Collections”, click “Import”
 3. Import the file `giving-go-a-go-workshop.postman_collection.json` from the `postman-requests` folder in this repo
 
+[(Back to top)](#table-of-contents)
+
 ## How to Go Further
 To continue learning about Go, check out these resources:
 - [The official Golang website (with documentation and their own Learn section!)](https://go.dev/) 
 - [An interactive introduction to Go](https://go.dev/tour/welcome/1) 
 - [An Introduction to Programming in Go](https://www.golang-book.com/books/intro)
 
-
+[(Back to top)](#table-of-contents)
 
 # Closing Words
 Thank you so much for checking us out at Hack The North 2023, or on the interwebs. We hope you had as much fun as we did making this workshop. We'd love to see what you end up coming up with on your own!
