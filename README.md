@@ -29,10 +29,35 @@ For easy access, here are the [slides](https://docs.google.com/presentation/d/1s
 ``` golang
 
 ```
+[(Back to top)](#table-of-contents)
+
 ## Read Part 2
+
+``` golang
+
+```
+[(Back to top)](#table-of-contents)
+
 ## Create
+
+``` golang
+
+```
+[(Back to top)](#table-of-contents)
+
 ## Update
+
+``` golang
+
+```
+[(Back to top)](#table-of-contents)
+
 ## Delete
+
+``` golang
+
+```
+[(Back to top)](#table-of-contents)
 
 # Closing Words
 Thank you so much for checking us out at Hack The North 2023, or on the interwebs. We hope you had as much fun as we did making this workshop. We'd love to see what you end up coming up with on your own!
