@@ -1,12 +1,16 @@
 package main
 
 import (
+	"net/http"
+	
 	"github.com/gin-gonic/gin"
+	"github.com/go-playground/validator/v10"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 )
 
 var db *gorm.DB
+var validate *validator.Validate
 
 // Helper method to set `db` to SQLite connection so we can make queries to `hackathons.db`
 func ConnectDatabase() {
@@ -65,6 +69,7 @@ func deleteHackathon(c *gin.Context) {
 
 func main() {
 	router := gin.Default()
+	validate = validator.New()
 
 	ConnectDatabase()
 
