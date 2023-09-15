@@ -27,20 +27,70 @@ For easy access, here are the [slides](https://docs.google.com/presentation/d/1s
 ## Read Part 1
 
 ``` golang
-
+func getHackathons(c *gin.Context) {
+    var hackathons []Hackathon
+    db.Find(&hackathons)
+    c.IndentedJSON(http.StatusOK, gin.H{"data": hackathons})
+}
 ```
 [(Back to top)](#table-of-contents)
 
 ## Read Part 2
 
 ``` golang
+func getHackathonById(c *gin.Context) {
+    var hackathon Hackathon
 
+    err := db.Where("id = ?", c.Param("id")).First(&hackathon).Error
+    if err != nil {
+        c.JSON(http.StatusBadRequest, gin.H{"error": "Hackathon not found!"})
+        return
+    }
+
+    c.JSON(http.StatusOK, gin.H{"data": hackathon})
+}
 ```
 [(Back to top)](#table-of-contents)
 
 ## Create
-
+Create this `struct` underneath `Hackathon`:
 ``` golang
+type HackathonInput struct {
+    Name     string `json:"name" validate:"required"`
+    Date     string `json:"date" validate:"required"`
+    Url      string `json:"url" validate:"required"`
+    Location string `json:"location" validate:"required"`
+}
+
+```
+
+In `createHackathon`, write the code below
+``` golang
+func createHackathon(c *gin.Context) {
+    var input HackathonInput
+
+    err := c.ShouldBindJSON(&input)
+    if err != nil {
+        c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+        return
+    }
+
+    err = validate.Struct(input)
+    if err != nil {
+        c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+        return
+    }
+    var hackathons []Hackathon
+    hackathon := Hackathon{
+        Id:       int(db.Find(&hackathons).RowsAffected) + 1,
+        Name:     input.Name,
+        Date:     input.Date,
+        Url:      input.Url,
+        Location: input.Location,
+    }
+    db.Create(&hackathon)
+    c.JSON(http.StatusOK, gin.H{"data": hackathon})
+}
 
 ```
 [(Back to top)](#table-of-contents)
@@ -48,6 +98,30 @@ For easy access, here are the [slides](https://docs.google.com/presentation/d/1s
 ## Update
 
 ``` golang
+func updateHackathon(c *gin.Context) {
+    var hackathon Hackathon
+    err := db.Where("id = ?", c.Param("id")).First(&hackathon).Error
+    if err != nil {
+        c.JSON(http.StatusBadRequest, gin.H{"error": "Hackathon not found!"})
+        return
+    }
+    var input HackathonInput
+
+    err = c.ShouldBindJSON(&input)
+    if err != nil {
+        c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+        return
+    }
+
+    err = validate.Struct(input)
+    if err != nil {
+        c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+        return
+    }
+
+    db.Model(&hackathon).Updates(input)
+    c.JSON(http.StatusOK, gin.H{"data": hackathon})
+}
 
 ```
 [(Back to top)](#table-of-contents)
@@ -55,6 +129,18 @@ For easy access, here are the [slides](https://docs.google.com/presentation/d/1s
 ## Delete
 
 ``` golang
+func deleteHackathon(c *gin.Context) {
+    var hackathon Hackathon
+
+    err := db.Where("id = ?", c.Param("id")).First(&hackathon).Error
+    if err != nil {
+        c.JSON(http.StatusBadRequest, gin.H{"error": "Hackathon not found!"})
+        return
+    }
+
+    db.Delete(&hackathon)
+    c.JSON(http.StatusOK, gin.H{"data": true})
+}
 
 ```
 [(Back to top)](#table-of-contents)
