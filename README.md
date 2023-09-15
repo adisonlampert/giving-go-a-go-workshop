@@ -9,13 +9,18 @@ Welcome to Hack the North 2023! We're Angela and Adison, your workshop leads. Ge
 - By participating in this workshop, hackers can learn the fundamentals of Go by using it to build a REST API and understand its unique features, enabling them to work with the language effectively in their hackathon projects or other tech endeavors.
 
 # Table of Contents
+- [Giving Go a Go: Build a REST API with Golang!](#giving-go-a-go-build-a-rest-api-with-golang)
+- [Table of Contents](#table-of-contents)
 - [Before You Start](#before-you-start)
 - [Code from Slides](#code-from-slides)
-  - [Read Part 1](#read-part-1)
-  - [Read Part 2](#read-part-2)
+  - [Read (Part 1)](#read-part-1)
+  - [Read (Part 2)](#read-part-2)
   - [Create](#create)
   - [Update](#update)
   - [Delete](#delete)
+- [Resources](#resources)
+  - [Postman Requests](#postman-requests)
+  - [How to Go Further](#how-to-go-further)
 - [Closing Words](#closing-words)
 
 # Before You Start
@@ -24,7 +29,7 @@ Please make sure that you've checked out the [Hack Pack](https://docs.google.com
 For easy access, here are the [slides](https://docs.google.com/presentation/d/1sZ5KwUzFqdukH_RCzL2q1imVodvokXQYFII_cc73t-8/edit#slide=id.g2764ce0426f_3_218)!
 
 # Code from Slides
-## Read Part 1
+## Read (Part 1)
 
 ``` golang
 func getHackathons(c *gin.Context) {
@@ -35,7 +40,7 @@ func getHackathons(c *gin.Context) {
 ```
 [(Back to top)](#table-of-contents)
 
-## Read Part 2
+## Read (Part 2)
 
 ``` golang
 func getHackathonById(c *gin.Context) {
@@ -144,6 +149,22 @@ func deleteHackathon(c *gin.Context) {
 
 ```
 [(Back to top)](#table-of-contents)
+
+# Resources
+
+## Postman Requests
+To import the Postman requests used in this workshop:
+1. Open Postman and navigate to “Workspaces” -> “My Workspace” (or create a workspace if there are none listed)
+2. In “Collections”, click “Import”
+3. Import the file `giving-go-a-go-workshop.postman_collection.json` from the `postman-requests` folder in this repo
+
+## How to Go Further
+To continue learning about Go, check out these resources:
+- [The official Golang website (with documentation and their own Learn section!)](https://go.dev/) 
+- [An interactive introduction to Go](https://go.dev/tour/welcome/1) 
+- [An Introduction to Programming in Go](https://www.golang-book.com/books/intro)
+
+
 
 # Closing Words
 Thank you so much for checking us out at Hack The North 2023, or on the interwebs. We hope you had as much fun as we did making this workshop. We'd love to see what you end up coming up with on your own!
